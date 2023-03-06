@@ -36,7 +36,7 @@ img {
 .color-box {
     width: 50px;
     height: 50px;
-    margin-top: 15px;
+    margin-top: 5px;
     border-radius: 5px;
 
 }
@@ -95,4 +95,7 @@ textarea {
     border: 1px solid #d8d8d8;
     border-radius: 5px;
 
+}
+.outOfStock{
+    text-decoration: line-through
 }

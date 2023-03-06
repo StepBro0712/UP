@@ -6,7 +6,6 @@ let app = new Vue({
         altText: "A pair of socks",
         link: "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
         inStock: true,
-        inventory: 100,
         onSale: true,
         details: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
@@ -14,11 +13,13 @@ let app = new Vue({
                 variantId: 2234,
                 variantColor: 'Green',
                 variantImage: "./assets/vmSocks-green-onWhite.jpg",
+                inventory: 100,
             },
             {
                 variantId: 2235,
                 variantColor: 'Blue',
                 variantImage: "./assets/vmSocks-blue-onWhite.jpg",
+                inventory: 20,
             }
         ],
         sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
