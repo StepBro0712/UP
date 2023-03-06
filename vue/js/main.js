@@ -12,7 +12,6 @@ let app = new Vue({
                 variantColor: 'green',
                 variantImage: "./assets/vmSocks-green-onWhite.jpg",
                 variantQuantity: 10,
-                inventory: 100,
                 onSale: true,
                 brand:'Slizerin'
             },
