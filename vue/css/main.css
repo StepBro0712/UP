@@ -34,9 +34,11 @@ img {
 }
 
 .color-box {
-    width: 40px;
-    height: 40px;
-    margin-top: 5px;
+    width: 50px;
+    height: 50px;
+    margin-top: 15px;
+    border-radius: 5px;
+
 }
 
 .cart {
@@ -86,4 +88,11 @@ textarea {
 .activeTab {
     color: #16C0B0;
     text-decoration: underline;
+}
+.sizes {
+    background-color: darkgrey;
+    width: 50px;
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+
 }
