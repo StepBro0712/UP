@@ -2,28 +2,33 @@ let app = new Vue({
     el: '#app',
     data: {
         product: "Socks",
-        image: "./assets/vmSocks-blue-onWhite.jpg",
+        brand:"Magical",
         altText: "A pair of socks",
         link: "https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=socks",
-        inStock: true,
-        onSale: true,
         details: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
             {
                 variantId: 2234,
-                variantColor: 'Green',
+                variantColor: 'green',
                 variantImage: "./assets/vmSocks-green-onWhite.jpg",
+                variantQuantity: 10,
                 inventory: 100,
+                onSale: true,
+                brand:'Slizerin'
             },
             {
                 variantId: 2235,
-                variantColor: 'Blue',
+                variantColor: 'blue',
                 variantImage: "./assets/vmSocks-blue-onWhite.jpg",
-                inventory: 20,
+                variantQuantity: 0,
+                onSale: false,
+                variantBrand:'Pufinduy'
             }
         ],
+
         sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
-        cart: 0
+        cart: 0,
+        selectedVariant: 0,
         },
     methods: {
         addToCart() {
@@ -32,8 +37,30 @@ let app = new Vue({
         removeFromCart() {
             this.cart -= 1
         },
-        updateProduct(variantImage) {
-            this.image = variantImage
+        updateProduct(index) {
+            this.selectedVariant = index;
+            console.log(index);
+        },
+
+
+    },
+    computed: {
+        title() {
+            return this.brand + ' ' + this.product;
+        },
+        image() {
+            return this.variants[this.selectedVariant].variantImage;
+        },
+        inStock(){
+            return this.variants[this.selectedVariant].variantQuantity
+        },
+        onSale(){
+            if(this.variants[this.selectedVariant].onSale) {
+                return true;
+            }
+            else {
+                return false
+            }
         }
     }
 })
