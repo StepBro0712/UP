@@ -35,8 +35,7 @@ Vue.component('product-tabs', {
             tabs: ['Reviews', 'Make a Review'],
             selectedTab: 'Reviews'
         }
-    }
-
+    },
 
 })
 
@@ -136,7 +135,7 @@ Vue.component('product', {
                    :style="{ backgroundColor:variant.variantColor }"
                    @mouseover="updateProduct(index)"
            ></div>
-          
+          <p style="padding-top: 20px ">Sale {{sale}}%</p>
            <button
                    v-on:click="addToCart"
                    :disabled="!inStock"
@@ -157,19 +156,22 @@ Vue.component('product', {
             details: ['80% cotton', '20% polyester', 'Gender-neutral'],
             variants: [
                 {
-                    variantId: 2234,
+                    variantId: 1,
                     variantColor: 'green',
                     variantImage: "./assets/vmSocks-green-onWhite.jpg",
-                    variantQuantity: 10
+                    variantQuantity: 10,
+                    sale: 10
                 },
                 {
-                    variantId: 2235,
+                    variantId: 2,
                     variantColor: 'blue',
                     variantImage: "./assets/vmSocks-blue-onWhite.jpg",
-                    variantQuantity: 0
+                    variantQuantity: 0,
+                    sale: 20
                 }
             ],
-            reviews: []
+            reviews: [],
+            sale: 10
         }
     },
     methods: {
@@ -178,8 +180,12 @@ Vue.component('product', {
         },
         updateProduct(index) {
             this.selectedVariant = index;
-            console.log(index);
+            this.sale = this.variants[index].sale;
+
         },
+        saleProduct(sale){
+            this.selectedVariant = sale;
+        }
 
     },
     computed: {
@@ -190,7 +196,7 @@ Vue.component('product', {
             return this.variants[this.selectedVariant].variantImage;
         },
         inStock() {
-            return this.variants[this.selectedVariant].variantQuantity
+            return this.variants[this.selectedVariant].variantQuantity;
         },
         shipping() {
             if (this.premium) {
@@ -206,19 +212,6 @@ Vue.component('product', {
         })
     }
 })
-let app = new Vue({
-    el: '#app',
-    data: {
-        premium: true,
-        cart: []
-    },
-    methods: {
-        updateCart(id) {
-            this.cart.push(id);
-        }
-    }
-})
-
 Vue.component('info-tabs', {
     props: {
         shipping: {
@@ -255,8 +248,23 @@ Vue.component('info-tabs', {
     `,
     data() {
         return {
+            name: 'infoTabs',
             tabs: ['Shipping', 'Details'],
             selectedTab: 'Shipping'
         }
     }
 })
+let app = new Vue({
+    el: '#app',
+    data: {
+        premium: true,
+        cart: []
+    },
+    methods: {
+        updateCart(id) {
+            this.cart.push(id);
+        }
+    }
+})
+
+
